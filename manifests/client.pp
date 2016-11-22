@@ -8,8 +8,8 @@ class x2go::client (
 ) {
   include x2go::common
 
-  package { "x2goclient":
-    ensure => $ensure,
+  package { 'x2goclient':
+    ensure  => $ensure,
     require => Class['x2go::common','apt::update'],
   }
 }

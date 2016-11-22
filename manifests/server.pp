@@ -8,24 +8,24 @@ class x2go::server (
 ) {
   include x2go::common
   if ($ensure) {
-      ensure_packages(["x2goserver", "x2goserver-extensions", 'x2goserver-xsession'],
+      ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'],
                       { ensure => $ensure,
                         require => [ Class['x2go::common'], Exec['apt_update'], ],
 #                        subscribe => Exec['apt_update'] ,
                       }
-                     )
+      )
       $runService = running
       service { 'x2goserver':
-        ensure => $runService,
-        enable => true,
-        hasstatus => false,
+        ensure     => $runService,
+        enable     => true,
+        hasstatus  => false,
         hasrestart => true,
-        status => '/usr/bin/pgrep -f x2gocleansessions',
-        require => [ Package ["x2goserver"] ] ,
+        status     => '/usr/bin/pgrep -f x2gocleansessions',
+        require    => Package['x2goserver'],
       }
     } else {
       $runService = stopped
-      ensure_packages(["x2goserver", "x2goserver-extensions", 'x2goserver-xsession'], { ensure => absent, })
+      ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure => absent, })
     }
 
 }

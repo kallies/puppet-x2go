@@ -14,30 +14,31 @@ class x2go::tce (
   $server             = '172.27.1.77',
   $x2go_server        = '172.25.1.70',
   $x2go_tce_base      = '/opt/x2gothinclient',
+  $x2go_tftp_root     = "${x2go_tce_base}/tftp",
   $x2go_chroot        = '/opt/x2gothinclient/chroot',
   $x2go_tce_os        = 'wheezy',
   $x2go_tce_mirror    = 'http://ftp.debian.org/debian',
-  $pxe_service        = "X86PC, 'Boot thinclient from network (x2go)', /pxelinux, $server",
-  $boot_params        = "ltsp/i386/pxelinux.0,server,$server",
+  $pxe_service        = "X86PC, 'Boot thinclient from network (x2go)', /pxelinux, ${server}",
+  $boot_params        = "ltsp/i386/pxelinux.0,server,${server}",
   $window_manager     = 'KDE',
   $lang               = 'de_CH.utf-8',
   $language           = 'de_CH:de',
   $xkbmodel           = 'pc105',
   $xkblayout          = 'ch',
   $groupsToLogIn      = 'praxis',
-  $sessions           = { "1" => {
+  $sessions           = { '1' => {
                               'name'  => "'X2go Elexis on server 172.25.1.70'",
-                              'host'  => "172.25.1.70",
-                              'user'  => "a_user",
-                              'rdpserver'  => "# no RDP (Windows only)",
+                              'host'  => '172.25.1.70',
+                              'user'  => 'a_user',
+                              'rdpserver'  => '# no RDP (Windows only)',
                               'applications' => '[OFFICE, WWWBROWSER, MAILCLIENT, TERMINAL]',
                               'command' => '/usr/local/bin/elexis',
                             },
-                        "2" => {
+                        '2' => {
                               'name'  => "'Windows Client'",
-                              'host'  => "172.25.1.80",
-                              'user'  => "",
-                              'rdpserver'  => "172.25.1.80",
+                              'host'  => '172.25.1.80',
+                              'user'  => '',
+                              'rdpserver'  => '172.25.1.80',
                               'applications' => '[WWWBROWSER, MAILCLIENT, TERMINAL]',
                               'command' => 'RDP',
                             },
@@ -50,9 +51,9 @@ class x2go::tce (
   $mount_point        = $x2go_chroot
   $managed_note       = 'managed by puppet x2go/tce.pp'
   include augeasproviders
-  sshd_config { "AllowGroups":
-    ensure    => present,
-    value     => "set AllowGroup $groupsToLogIn",
+  sshd_config { 'AllowGroups':
+    ensure => present,
+    value  => "set AllowGroup ${groupsToLogIn}",
   }
 
   class {'dnsmasq::x2go_tce':
@@ -60,22 +61,22 @@ class x2go::tce (
     pxe_service   => $pxe_service,
     boot_params   => $boot_params,
     x2go_tce_root => $x2go_tce_base,
-    tftp_root     => "$x2go_tce_base/tftp",
+    tftp_root     => $x2go_tftp_root,
   }
 
-  notify { "Using x2go_tce_base WITH $x2go_tce_base and chroot $x2go_chroot for $x2go_tce_os":}
+  notify { "Using x2go_tce_base WITH ${x2go_tce_base} and chroot ${x2go_chroot} for ${x2go_tce_os}":}
   package { 'x2gothinclientmanagement':
-    ensure => $ensure,
+    ensure  => $ensure,
     require => Class['x2go::common','apt::update'],
   }
 
-  file {"/etc/x2go/x2gothinclient_settings":
+  file {'/etc/x2go/x2gothinclient_settings':
     require => Class['x2go::common','apt::update'],
-    content => template("x2go/x2gothinclient_settings.erb"),
+    content => template('x2go/x2gothinclient_settings.erb'),
     notify  => Exec['x2go::tce::x2gothinclient_update'],
     }
 
-  file {"/etc/x2go/x2gothinclient_start":
+  file {'/etc/x2go/x2gothinclient_start':
     require => Class['x2go::common','apt::update'],
     content => "x2goclient \
            --session='Standard' \
@@ -85,37 +86,37 @@ class x2go::tce (
            --thinclient \
            --haltbt \
            --link=lan \
-           --kbd-layout=$xkblayout \
-           --kbd-type=$xkbmodel \
+           --kbd-layout=${xkblayout} \
+           --kbd-type=${xkbmodel} \
            --set-kbd=1 \
            --geometry=fullscreen \
            --read-exports-from=~x2gothinclient/export \
            --session-edit \
            --add-to-known-hosts &
-# $managed_note
+# ${managed_note}
 ",
     notify  => Exec['x2go::tce::x2gothinclient_update'],
     }
 
-  file {"$x2go_tce_base/tftp/x2go-elexis-tce.cfg":
+  file {"${x2go_tce_base}/tftp/x2go-elexis-tce.cfg":
     content => "LABEL x2go-elexis-tce
         MENU LABEL  X2Go ^Elexis Thin Client
         MENU DEFAULT
         KERNEL vmlinuz.486
-        APPEND initrd=initrd.img.486 nfsroot=$mount_point boot=nfs ro nomodeset splash
+        APPEND initrd=initrd.img.486 nfsroot=${mount_point} boot=nfs ro nomodeset splash
     ",
     require => Exec['x2go::tce::x2gothinclient_preptftpboot'],
     notify  => Exec['x2go::tce::x2gothinclient_update'],
     }
 
-    file {"$x2go_tce_base/etc/x2gothinclient_sessions":
+    file {"${x2go_tce_base}/etc/x2gothinclient_sessions":
       require => Exec['x2go::tce::x2gothinclient_preptftpboot'],
       notify  => Exec['x2go::tce::x2gothinclient_update'],
-      content => template("x2go/x2gothinclient_sessions.erb"),
+      content => template('x2go/x2gothinclient_sessions.erb'),
     }
-  file {"$x2go_tce_base/tftp/default.cfg":
+  file {"${x2go_tce_base}/tftp/default.cfg":
     require => Exec['x2go::tce::x2gothinclient_preptftpboot'],
-    content => "# $managed_note
+    content => "# ${managed_note}
 #
 # example for a main boot menu of an X2Go Thin Client
 #
@@ -172,22 +173,22 @@ TIMEOUT 50
       File['/etc/x2go/x2gothinclient_settings'],
       ],
       # we install also the default configuration
-    command => "rm -rf $x2go_chroot; sudo -iuroot x2gothinclient_create",
-    path => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
-    creates => "$x2go_chroot/etc/apt/sources.list.d/x2go.list",
+    command => "rm -rf ${x2go_chroot}; sudo -iuroot x2gothinclient_create",
+    path    => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
+    creates => "${x2go_chroot}/etc/apt/sources.list.d/x2go.list",
     notify  => Exec['/usr/local/bin/x2gothinclient_add_firmware'],
     timeout => 1800, # allow maximal 30 minutes for download all the stuff. Default timeout is too short
   }
 
   file{'/usr/local/bin/x2gothinclient_add_firmware':
     require => [Exec['x2go::tce::x2gothinclient_create']],
-    content => template("x2go/x2go_install_firmware.erb"),
+    content => template('x2go/x2go_install_firmware.erb'),
     notify  => Exec['/usr/local/bin/x2gothinclient_add_firmware'],
-    mode => 0755,
+    mode    => '0755',
   }
   exec{'/usr/local/bin/x2gothinclient_add_firmware':
-    command => "/usr/local/bin/x2gothinclient_add_firmware",
-    path => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
+    command => '/usr/local/bin/x2gothinclient_add_firmware',
+    path    => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
     notify  => Exec['x2go::tce::x2gothinclient_update'],
   }
 
@@ -197,33 +198,33 @@ TIMEOUT 50
       File['/etc/x2go/x2gothinclient_settings'],
       ],
       # we install also the default configuration
-    command => "sudo -iuroot x2gothinclient_update",
-    path => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
-    notify => Service['dnsmasq'],
+    command => 'sudo -iuroot x2gothinclient_update',
+    path    => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
+    notify  => Service['dnsmasq'],
   }
   exec{'x2go::tce::x2gothinclient_preptftpboot':
     require => Exec['x2go::tce::x2gothinclient_create'],
-    command => "rm -rf $x2go_tce_base/tftp; sudo -iuroot x2gothinclient_preptftpboot", # we need to use sudo or x2go will complain!
-    path => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
-    creates => "$x2go_tftp_root/x2go-splash.png",
+    command => "rm -rf ${x2go_tce_base}/tftp; sudo -iuroot x2gothinclient_preptftpboot", # we need to use sudo or x2go will complain!
+    path    => '/usr/local/bin:/usr/bin/:/bin:/usr/sbin:/sbin',
+    creates => "${x2go_tftp_root}/x2go-splash.png",
     }
 
-  file{"$x2go_chroot/etc/default/keyboard":
+  file{"${x2go_chroot}/etc/default/keyboard":
     require => Exec['x2go::tce::x2gothinclient_update'],
-    content =>"# $managed_note
-XKBMODEL='$xkbmodel'
-XKBLAYOUT='$xkblayout'
+    content =>"# ${managed_note}
+XKBMODEL='${xkbmodel}'
+XKBLAYOUT='${xkblayout}'
 XKBVARIANT=''
 XKBOPTIONS=''
 BACKSPACE='guess'
 ",
   }
 
-  file{"$x2go_chroot/etc/default/locale":
+  file{"${x2go_chroot}/etc/default/locale":
     require => Exec['x2go::tce::x2gothinclient_update'],
-    content =>"# $managed_note
-LANG=$lang
-LANGUAGE=$language
+    content =>"# ${managed_note}
+LANG=${lang}
+LANGUAGE=${language}
 ",
   }
 
@@ -233,9 +234,9 @@ class { 'nfs::server':
     enable  => true,
 }
 
-nfs::export { "$x2go_chroot":
+nfs::export { $x2go_chroot:
         options => [ 'ro', 'async', 'no_subtree_check', 'no_root_squash'],
-        clients => [ "$export_2_network" ],
+        clients => [ $export_2_network ],
     }
   }
 }

@@ -7,7 +7,7 @@ define x2go::plugin (
   $ensure             =  present,
 ) {
   include x2go::common
-  package { "x2goplugin":
+  package { 'x2goplugin':
     ensure => $ensure,
-  }	
+  }
 }
