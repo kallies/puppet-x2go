@@ -1,12 +1,12 @@
 {
-  "name": "ngiger-x2go",
-  "version": "0.2.0",
+  "name": "kallies-x2go",
+  "version": "0.2.1",
   "author": "Niklaus Giger <niklaus.giger@member.fsf.org>",
   "summary": "x2go Puppet module.",
   "license": "GNU General Public License v3 or Later (GPLv3+)",
-  "source": "",
-  "project_page": "https://github.com/ngiger/puppet-x2go",
-  "issues_url": null,
+  "source": "https://github.com/kallies/puppet-x2go.git",
+  "project_page": "https://github.com/kallies/puppet-x2go",
+  "issues_url": "https://github.com/kallies/puppet-x2go/issues",
   "description": "Puppet module for x2go client and server.",
   "dependencies": [
     {"name":"puppetlabs/apt","version_requirement":">= 1.0.0"},
