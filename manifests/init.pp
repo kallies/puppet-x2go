@@ -34,8 +34,8 @@
 # the Free Software Foundation.
 #
 class x2go(
-  String  $version        = 'main',
-  Boolean $install_client = true,
+  $version        = 'main',
+  $install_client = true,
 ) {
   include x2go::common
   if ($install_client) {
