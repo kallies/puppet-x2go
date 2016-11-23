@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/kallies/puppet-x2go/issues",
   "description": "Puppet module for x2go client and server.",
   "dependencies": [
-    {"name":"puppetlabs/apt","version_requirement":">= 2.0.0"},
+    {"name":"puppetlabs/apt","version_requirement":">= 1.0.0"},
     {"name":"erwbgy/ssh","version_requirement":">= 0.2.1"},
     {"name":"domcleal/augeasproviders","version_requirement":">= 1.2.0"},
     {"name":"ngiger/dnsmasq","version_requirement":">= 0.1.0"},

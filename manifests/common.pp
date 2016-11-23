@@ -15,11 +15,11 @@ class x2go::common() {
   }
 
   case $::operatingsystem {
-      'Debian':  {
-          include apt
-          include x2go::repo::debian
-  }
-  'Ubuntu': {
+    'Debian': {
+      include apt
+      include x2go::repo::debian
+    }
+    'Ubuntu': {
       include apt
       # apt::ppa { "ppa:x2go/stable": } this does not work as it is interactive!
       file{'/etc/apt/sources.list.d/x2go-stable-trusty.list':
@@ -32,8 +32,9 @@ class x2go::common() {
       # deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main
 
 
-  } # apply the redhat class
-  default:  { fail("\nx2go not (yet?) supported under ${::operatingsystem}!!")
-      }
+    } # apply the redhat class
+    default: {
+      fail("\nx2go not (yet?) supported under ${::operatingsystem}!!")
+    }
   }
 }
