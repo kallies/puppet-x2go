@@ -13,25 +13,31 @@ This module has been forked from [ngiger/puppet-x2go](https://github.com/ngiger/
 
 * To install the x2go client:
 
-    class { 'x2go::client': }
+```
+class { 'x2go::client': }
+```
 
 This sets ensure => present for the package. If you want to set a different
 value, you can override the x2go::params::ensure parameter using hiera.
 
 * To remove the x2go client:
 
-    class { 'x2go':
-      version => 'baikal',
-    }
-    class { 'x2go::client::absent': }
+```
+class { 'x2go':
+  version => 'baikal',
+}
+class { 'x2go::client::absent': }
+```
 
 * To install a x2go thin client environment
 
-    class { 'x2go::tce':
-      version          => 'latest',
-      x2go_tce_base    => '/opt/x2gothinclient', # will have chroot and etc directories below
-      export_2_network => '192.168.1.0/255.255.255.0',
-    }
+```
+class { 'x2go::tce':
+  version          => 'latest',
+  x2go_tce_base    => '/opt/x2gothinclient', # will have chroot and etc directories below
+  export_2_network => '192.168.1.0/255.255.255.0',
+}
+```
 
 You will probably have to customize your installation: see the [x2go wiki](http://wiki.x2go.org/doku.php/wiki:advanced:tce:install "x2go documentation: tce:install")
 
