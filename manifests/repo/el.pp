@@ -1,3 +1,4 @@
+# Class x2go::repo::el
 class x2go::repo::el {
   File {
     owner => 'root',

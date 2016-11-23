@@ -4,12 +4,12 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation.class
 class x2go::client (
-  $ensure             =  false,
+  $ensure = false,
 ) {
   include x2go::common
 
-  package { "x2goclient":
-    ensure => $ensure,
+  package { 'x2goclient':
+    ensure  => $ensure,
     require => Class['x2go::common','apt::update'],
   }
 }

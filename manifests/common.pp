@@ -14,26 +14,27 @@ class x2go::common() {
     key_server => 'pgp.mit.edu',
   }
 
-  case $operatingsystem {
-      'Debian':  {
-          include apt
-          include x2go::repo::debian
-	}
-  'Ubuntu': {
+  case $::operatingsystem {
+    'Debian': {
+      include apt
+      include x2go::repo::debian
+    }
+    'Ubuntu': {
       include apt
       # apt::ppa { "ppa:x2go/stable": } this does not work as it is interactive!
       file{'/etc/apt/sources.list.d/x2go-stable-trusty.list':
-        ensure => present,
+        ensure  => present,
         content => "deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main\n",
-        notify => Exec['apt_update'],
+        notify  => Exec['apt_update'],
       }
       # gpg: key 0A53F9FD: public key "Launchpad PPA for x2go" imported
       # /etc/apt/sources.list.d/x2go-stable-trusty.list
       # deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main
 
 
-  } # apply the redhat class
-  default:  { fail("\nx2go not (yet?) supported under $operatingsystem!!")
-      }
+    } # apply the redhat class
+    default: {
+      fail("\nx2go not (yet?) supported under ${::operatingsystem}!!")
+    }
   }
 }
