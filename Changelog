@@ -1,3 +1,8 @@
+Version 0.3.1:
+- Fix wrong PGP key and change apt repo syntax.
+- Add stdlib as requirement
+- require puppetlabs-apt >= 2.0.0
+
 Version 0.3.0:
 - Fix rake test
 - clean up code
