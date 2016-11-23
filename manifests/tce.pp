@@ -25,7 +25,7 @@ class x2go::tce (
   $language           = 'de_CH:de',
   $xkbmodel           = 'pc105',
   $xkblayout          = 'ch',
-  $groupsToLogIn      = 'praxis',
+  $groups_to_log_in      = 'praxis',
   $sessions           = { '1' => {
                               'name'  => "'X2go Elexis on server 172.25.1.70'",
                               'host'  => '172.25.1.70',
@@ -53,7 +53,7 @@ class x2go::tce (
   include augeasproviders
   sshd_config { 'AllowGroups':
     ensure => present,
-    value  => "set AllowGroup ${groupsToLogIn}",
+    value  => "set AllowGroup ${groups_to_log_in}",
   }
 
   class {'dnsmasq::x2go_tce':

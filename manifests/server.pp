@@ -14,9 +14,9 @@ class x2go::server (
 #                        subscribe => Exec['apt_update'] ,
                       }
       )
-      $runService = running
+      $run_service = running
       service { 'x2goserver':
-        ensure     => $runService,
+        ensure     => $run_service,
         enable     => true,
         hasstatus  => false,
         hasrestart => true,
@@ -24,7 +24,7 @@ class x2go::server (
         require    => Package['x2goserver'],
       }
     } else {
-      $runService = stopped
+      $run_service = stopped
       ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure => absent, })
     }
 

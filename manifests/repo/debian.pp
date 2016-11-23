@@ -7,7 +7,7 @@ class x2go::repo::debian {
 
   apt::source { 'x2go':
     location    => 'http://packages.x2go.org/debian',
-    release     => $lsbdistcodename,
+    release     => $::lsbdistcodename,
     repos       => $release_train,
     key         => 'E1F958385BFE2B6E',
     key_server  => 'subkeys.pgp.net',
