@@ -4,7 +4,7 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation.class
 class x2go::client (
-  $ensure = false,
+  $ensure = 'present',
 ) {
   include x2go::common
 

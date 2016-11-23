@@ -9,10 +9,10 @@
 # see http://wiki.x2go.org/doku.php/wiki:x2go-repository-debian
 #     http://wiki.x2go.org/doku.php/wiki:x2go-repository-ubuntu # see also about automatic login
 class x2go::common() {
-  apt::key { 'x2go':
-    key        => 'E1F958385BFE2B6E',
-    key_server => 'pgp.mit.edu',
-  }
+  #LK#  apt::key { 'x2go':
+  #LK#    key        => 'E1F958385BFE2B6E',
+  #LK#    key_server => 'pgp.mit.edu',
+  #LK#  }
 
   case $::operatingsystem {
     'Debian': {
@@ -21,12 +21,13 @@ class x2go::common() {
     }
     'Ubuntu': {
       include apt
+      include x2go::repo::ubuntu
       # apt::ppa { "ppa:x2go/stable": } this does not work as it is interactive!
-      file{'/etc/apt/sources.list.d/x2go-stable-trusty.list':
-        ensure  => present,
-        content => "deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main\n",
-        notify  => Exec['apt_update'],
-      }
+      #LK#file{'/etc/apt/sources.list.d/x2go-stable-trusty.list':
+      #LK#  ensure  => present,
+      #LK#  content => "deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main\n",
+      #LK#  notify  => Exec['apt_update'],
+      #LK#}
       # gpg: key 0A53F9FD: public key "Launchpad PPA for x2go" imported
       # /etc/apt/sources.list.d/x2go-stable-trusty.list
       # deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main

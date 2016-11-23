@@ -4,7 +4,7 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation
 class x2go::server (
-  $ensure = false,
+  $ensure = true,
 ) {
   include x2go::common
   if ($ensure) {
