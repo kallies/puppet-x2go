@@ -1,6 +1,6 @@
 # Class x2go::repo::debian
 class x2go::repo::debian {
-  case $x2go::version  {
+  case $x2go::version {
     'baikal': { $release_train = 'baikal'  }
     default:  { $release_train = 'main' }
   }
