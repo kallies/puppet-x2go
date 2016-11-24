@@ -1,12 +1,12 @@
 {
-  "name": "fischassetmanagement-x2go",
+  "name": "kallies-x2go",
   "version": "0.3.1",
   "author": "Niklaus Giger <niklaus.giger@member.fsf.org>",
   "summary": "x2go Puppet module.",
   "license": "GPL-3.0+",
-  "source": "https://github.com/fisch-asset-management/puppet-x2go.git",
-  "project_page": "https://github.com/fisch-asset-management/puppet-x2go",
-  "issues_url": "https://github.com/fisch-asset-management/puppet-x2go/issues",
+  "source": "https://github.com/kallies/puppet-x2go.git",
+  "project_page": "https://github.com/kallies/puppet-x2go",
+  "issues_url": "https://github.com/kallies/puppet-x2go/issues",
   "description": "Puppet module for x2go client and server.",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
