@@ -20,6 +20,7 @@ if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
   gem 'rake', '~> 10.0'
 else
   # rubocop requires ruby >= 1.9
-  gem 'rubocop'
+  gem 'rubocop'              if RUBY_VERSION >= '2.0.0'
+  gem 'rubocop', '<= 0.41.2' if RUBY_VERSION < '2.0.0'
 end
 
