@@ -10,7 +10,6 @@ class x2go::repo::debian {
     location    => 'http://packages.x2go.org/debian',
     release     => $::lsbdistcodename,
     repos       => $release_train,
-    key_server  => 'subkeys.pgp.net',
     include_src => false,
     key         => {
       'id'     => 'E1F958385BFE2B6E',
