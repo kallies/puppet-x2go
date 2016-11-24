@@ -11,6 +11,16 @@
 # * `install_client`
 # Boolean value to decide if the client should be installed.
 #
+# * `install_server`
+# Boolean value to decide if the server should be installed.
+#
+# * `epel_repo`
+# If this is running on an RedHat/Fedora based OS decide wheter to use
+# use fedoraproject EPEL (fedora) or to use the x2go EPEL repository (x2go).
+# Possible values:
+# - fedora
+# - x2go
+#
 # Examples
 # --------
 #
@@ -36,10 +46,14 @@
 class x2go(
   $version        = 'main',
   $install_client = true,
+  $install_server = false,
+  $epel_repo      = 'x2go',
 ) {
-  include x2go::common
   if ($install_client) {
     include x2go::client
+  }
+  if ($install_server) {
+    include x2go::server
   }
 }
 

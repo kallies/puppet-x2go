@@ -5,6 +5,7 @@ class x2go::repo::debian {
     default:  { $release_train = 'main' }
   }
 
+  include apt
   apt::source { 'x2go':
     location    => 'http://packages.x2go.org/debian',
     release     => $::lsbdistcodename,

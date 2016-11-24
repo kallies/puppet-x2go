@@ -6,11 +6,11 @@
 class x2go::server (
   $ensure = true,
 ) {
-  include x2go::common
+  include x2go::repo
   if ($ensure) {
       ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'],
-                      { ensure => $ensure,
-                        require => [ Class['x2go::common'], Exec['apt_update'], ],
+                      { ensure  => $ensure,
+                        require => [ Class['x2go::repo'], Exec['apt_update'], ],
 #                        subscribe => Exec['apt_update'] ,
                       }
       )

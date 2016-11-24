@@ -1,3 +1,10 @@
+Version 0.3.2:
+- Remove tce example
+- Rename common class to repo
+- Add flag for server install
+- Extend el repo class (not yet ready)
+- Clean up includes, move to repo/*
+
 Version 0.3.1:
 - Fix wrong PGP key and change apt repo syntax.
 - Add stdlib as requirement
@@ -22,5 +29,5 @@ Version 0.1.2:
 Version 0.1.1:
 
 - Remove inexisting stage. Thanks to Carlos Sanchez for the patch!
-  
+
 Version 0.1.0:  initial release
