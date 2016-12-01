@@ -31,7 +31,7 @@ class { 'x2go::client::absent': }
 
 * To install a x2go thin client environment
 
-:!: because the tce class needs a lot of dependencies which are not needed for x2go client/server classes the tce stuff is only in branch x2go-thinclient-environment_tce
+:red_circle: because the tce class needs a lot of dependencies which are not needed for x2go client/server classes the tce stuff is only in branch x2go-thinclient-environment_tce
 
 
 ```
