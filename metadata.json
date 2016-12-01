@@ -7,9 +7,57 @@
   "source": "https://github.com/kallies/puppet-x2go.git",
   "project_page": "https://github.com/kallies/puppet-x2go",
   "issues_url": "https://github.com/kallies/puppet-x2go/issues",
+  "operatingsystem_support": [
+//    {
+//      "operatingsystem": "RedHat",
+//      "operatingsystemrelease": [
+//        "5",
+//        "6",
+//        "7"
+//      ]
+//    },
+//    {
+//      "operatingsystem": "CentOS",
+//      "operatingsystemrelease": [
+//        "5",
+//        "6",
+//        "7"
+//      ]
+//    },
+//    {
+//      "operatingsystem": "OracleLinux",
+//      "operatingsystemrelease": [
+//        "5",
+//        "6",
+//        "7"
+//      ]
+//    },
+//    {
+//      "operatingsystem": "Scientific",
+//      "operatingsystemrelease": [
+//        "5",
+//        "6",
+//        "7"
+//      ]
+//    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
+  ],
   "description": "Puppet module for x2go client and server.",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-stdlib","version_requirement":">= 3.0.1"},
     {"name":"puppetlabs-apt","version_requirement":">= 2.0.0"}
   ]
 }
