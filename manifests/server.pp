@@ -4,28 +4,19 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation
 class x2go::server (
-  $ensure = true,
+  $ensure        = 'present',
+  $service_state = 'running',
 ) {
   include x2go::repo
-  if ($ensure) {
-      ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'],
-                      { ensure  => $ensure,
-                        require => [ Class['x2go::repo'], Exec['apt_update'], ],
-#                        subscribe => Exec['apt_update'] ,
-                      }
-      )
-      $run_service = running
-      service { 'x2goserver':
-        ensure     => $run_service,
-        enable     => true,
-        hasstatus  => false,
-        hasrestart => true,
-        status     => '/usr/bin/pgrep -f x2gocleansessions',
-        require    => Package['x2goserver'],
-      }
-    } else {
-      $run_service = stopped
-      ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure => absent, })
-    }
+  ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure  => $ensure, })
+
+  service { 'x2goserver':
+    ensure     => $service_state,
+    enable     => true,
+    hasstatus  => false,
+    hasrestart => true,
+    status     => '/usr/bin/pgrep -f x2gocleansessions',
+    require    => Package['x2goserver'],
+  }
 
 }
