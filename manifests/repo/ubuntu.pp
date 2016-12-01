@@ -1,6 +1,7 @@
 # Class x2go::repo::ubuntu
 class x2go::repo::ubuntu {
 
+  include apt
   apt::source { 'x2go':
     location    => 'http://ppa.launchpad.net/x2go/stable/ubuntu',
     repos       => 'trusty main',

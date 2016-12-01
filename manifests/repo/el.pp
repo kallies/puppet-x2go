@@ -1,5 +1,8 @@
 # Class x2go::repo::el
-class x2go::repo::el {
+class x2go::repo::el (
+  $epel_repo = $::x2go::epel_repo,
+) {
+  # TODO
   File {
     owner => 'root',
     group => 'root',

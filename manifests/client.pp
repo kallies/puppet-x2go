@@ -6,10 +6,10 @@
 class x2go::client (
   $ensure = 'present',
 ) {
-  include x2go::common
+  include x2go::repo
 
   package { 'x2goclient':
     ensure  => $ensure,
-    require => Class['x2go::common','apt::update'],
+    require => Class['x2go::repo','apt::update'],
   }
 }

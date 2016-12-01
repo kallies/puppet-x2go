@@ -26,7 +26,8 @@ describe 'x2go' do
       should compile
       should compile.with_all_deps
       should contain_exec('apt_update')
-      should contain_class('X2go::Common')
+      should contain_class('X2go::Client')
+      should contain_class('X2go::Repo')
       should contain_class('X2go::Repo::Debian')
       should contain_apt__key ('Add key: E1F958385BFE2B6E from Apt::Source x2go')
     }

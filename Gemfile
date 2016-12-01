@@ -11,12 +11,16 @@ gem 'puppet-lint', '~> 2.0'
 #gem 'puppet-syntax'
 #gem 'hiera-puppet-helper'
 
+gem 'json',      '<= 1.8'   if RUBY_VERSION < '2.0.0'
+gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
+
 # rspec must be v2 for ruby 1.8.7
 if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
   gem 'rspec', '~> 2.0'
   gem 'rake', '~> 10.0'
 else
   # rubocop requires ruby >= 1.9
-  gem 'rubocop'
+  gem 'rubocop'              if RUBY_VERSION >= '2.0.0'
+  gem 'rubocop', '<= 0.41.2' if RUBY_VERSION < '2.0.0'
 end
 
