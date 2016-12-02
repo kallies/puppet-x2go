@@ -10,6 +10,7 @@ class x2go::server (
   if ($install_server) {
     package { ['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession']:
       ensure  => $ensure,
+      require => Class['apt::update'],
     }
   }
 }

@@ -10,6 +10,7 @@ class x2go::client (
   if ($install_client) {
     package { 'x2goclient':
       ensure  => $ensure,
+      require => Class['apt::update'],
     }
   }
 }
