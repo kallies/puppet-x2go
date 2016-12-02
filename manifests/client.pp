@@ -8,6 +8,5 @@ class x2go::client (
 ) {
   package { 'x2goclient':
     ensure  => $ensure,
-    require => Class['x2go::repo','apt::update'],
   }
 }
