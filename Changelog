@@ -1,3 +1,8 @@
+Version 0.3.3:
+- Resolve repo dependencies
+- Clean up dependencies with install and service class
+- Correct Issues and Source URI in metadata
+
 Version 0.3.2:
 - Remove tce example
 - Rename common class to repo

@@ -1,12 +1,12 @@
 {
   "name": "fischassetmanagement-x2go",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Niklaus Giger <niklaus.giger@member.fsf.org>",
   "summary": "x2go Puppet module.",
   "license": "GPL-3.0+",
-  "source": "https://github.com/kallies/puppet-x2go.git",
-  "project_page": "https://github.com/kallies/puppet-x2go",
-  "issues_url": "https://github.com/kallies/puppet-x2go/issues",
+  "source": "https://github.com/fisch-asset-management/puppet-x2go.git",
+  "project_page": "https://github.com/fisch-asset-management/puppet-x2go",
+  "issues_url": "https://github.com/fisch-asset-management/puppet-x2go/issues",
   "operatingsystem_support": [
 //    {
 //      "operatingsystem": "RedHat",
