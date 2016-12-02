@@ -4,9 +4,12 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation.class
 class x2go::client (
-  $ensure = 'present',
+  $ensure         = 'present',
+  $install_client = ::x2go::install_client,
 ) {
-  package { 'x2goclient':
-    ensure  => $ensure,
+  if ($install_client) {
+    package { 'x2goclient':
+      ensure  => $ensure,
+    }
   }
 }

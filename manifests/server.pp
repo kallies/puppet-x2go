@@ -4,7 +4,12 @@
 # under the terms of the GNU General Public License version 3 as published by
 # the Free Software Foundation
 class x2go::server (
-  $ensure        = 'present',
+  $ensure         = 'present',
+  $install_server = ::x2go::install_server,
 ) {
-  ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure  => $ensure, })
+  if ($install_server) {
+    package { ['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession']:
+      ensure  => $ensure,
+    }
+  }
 }
