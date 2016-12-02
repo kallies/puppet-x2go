@@ -7,7 +7,6 @@ class x2go::server (
   $ensure        = 'present',
   $service_state = 'running',
 ) {
-  include x2go::repo
   ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure  => $ensure, })
 
   service { 'x2goserver':

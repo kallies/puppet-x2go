@@ -49,11 +49,14 @@ class x2go(
   $install_server = false,
   $epel_repo      = 'x2go',
 ) {
+
   if ($install_client) {
-    include x2go::client
+    class { '::x2go::repo': } ->
+    class { '::x2go::client': }
   }
   if ($install_server) {
-    include x2go::server
+    class { '::x2go::repo': } ->
+    class { '::x2go::server': }
   }
 }
 
