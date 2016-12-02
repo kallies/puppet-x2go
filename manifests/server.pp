@@ -5,17 +5,6 @@
 # the Free Software Foundation
 class x2go::server (
   $ensure        = 'present',
-  $service_state = 'running',
 ) {
   ensure_packages(['x2goserver', 'x2goserver-extensions', 'x2goserver-xsession'], { ensure  => $ensure, })
-
-  service { 'x2goserver':
-    ensure     => $service_state,
-    enable     => true,
-    hasstatus  => false,
-    hasrestart => true,
-    status     => '/usr/bin/pgrep -f x2gocleansessions',
-    require    => Package['x2goserver'],
-  }
-
 }
