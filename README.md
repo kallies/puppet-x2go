@@ -14,7 +14,9 @@ This module has been forked from [ngiger/puppet-x2go](https://github.com/ngiger/
 * To install the x2go client:
 
 ```
-class { 'x2go::client': }
+class { 'x2go':
+  install_client => true,
+}
 ```
 
 This sets ensure => present for the package. If you want to set a different
@@ -27,6 +29,14 @@ class { 'x2go':
   version => 'baikal',
 }
 class { 'x2go::client::absent': }
+```
+* To install the x2go server:
+
+```
+class { 'x2go':
+  install_client => false,
+  install_server => true,
+}
 ```
 
 * To install a x2go thin client environment
