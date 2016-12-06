@@ -57,7 +57,13 @@
   ],
   "description": "Puppet module for x2go client and server.",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 3.0.1"},
-    {"name":"puppetlabs-apt","version_requirement":">= 2.0.0"}
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 3.0.1 < 5.0.0"
+    },
+    {
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    }
   ]
 }
