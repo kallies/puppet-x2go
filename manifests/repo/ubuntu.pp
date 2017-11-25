@@ -1,4 +1,4 @@
-# Class x2go::repo::ubuntu
+# x2go::repo::ubuntu
 class x2go::repo::ubuntu {
 
   # puppetlabs/apt

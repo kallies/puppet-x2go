@@ -1,6 +1,10 @@
-# Class x2go::repo::el
+# x2go::repo::el
+#
+# @param epel_repo If this is running on an RedHat/Fedora based OS decide wheter to use
+#   fedoraproject EPEL (fedora) or to use the x2go EPEL repository (x2go).
+#
 class x2go::repo::el (
-  $epel_repo = $::x2go::epel_repo,
+  Enum['fedora', 'x2go'] $epel_repo = $::x2go::epel_repo,
 ) {
   # TODO
   File {

@@ -1,45 +1,13 @@
 {
-  "name": "fischassetmanagement-x2go",
-  "version": "0.3.3",
-  "author": "Niklaus Giger <niklaus.giger@member.fsf.org>",
+  "name": "kallies-x2go",
+  "version": "0.5.0",
+  "author": "Lukas Kallies <lukas@kalli.es>",
   "summary": "x2go Puppet module.",
   "license": "GPL-3.0+",
-  "source": "https://github.com/fisch-asset-management/puppet-x2go.git",
-  "project_page": "https://github.com/fisch-asset-management/puppet-x2go",
-  "issues_url": "https://github.com/fisch-asset-management/puppet-x2go/issues",
+  "source": "https://github.com/kallies/puppet-x2go.git",
+  "project_page": "https://github.com/kallies/puppet-x2go",
+  "issues_url": "https://github.com/kallies/puppet-x2go/issues",
   "operatingsystem_support": [
-//    {
-//      "operatingsystem": "RedHat",
-//      "operatingsystemrelease": [
-//        "5",
-//        "6",
-//        "7"
-//      ]
-//    },
-//    {
-//      "operatingsystem": "CentOS",
-//      "operatingsystemrelease": [
-//        "5",
-//        "6",
-//        "7"
-//      ]
-//    },
-//    {
-//      "operatingsystem": "OracleLinux",
-//      "operatingsystemrelease": [
-//        "5",
-//        "6",
-//        "7"
-//      ]
-//    },
-//    {
-//      "operatingsystem": "Scientific",
-//      "operatingsystemrelease": [
-//        "5",
-//        "6",
-//        "7"
-//      ]
-//    },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
@@ -63,7 +31,7 @@
     },
     {
       "name": "puppetlabs-apt",
-      "version_requirement": ">= 2.0.0 < 3.0.0"
+      "version_requirement": ">= 2.0.0 < 5.0.0"
     }
   ]
 }

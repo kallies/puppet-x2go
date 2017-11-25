@@ -1,13 +1,16 @@
 require 'spec_helper'
 
 describe 'x2go' do
-  let(:facts) do
-    {
-      :operatingsystem => 'Debian',
-	  :osfamily        => 'Debian',
-	  :puppetversion   => Puppet.version,
-	  :lsbdistid       => 'Debian',
-	  :lsbdistcodename => 'wheezy',
+  let(:facts) { StretchFacts }
+
+  context 'when running with default parameters' do
+    it {
+      should compile
+      should compile.with_all_deps
+      should contain_class('x2go::install')
+      should contain_class('x2go::client')
+      should contain_class('x2go::repo')
+      should contain_package('x2goclient')
     }
   end
 
@@ -26,13 +29,8 @@ describe 'x2go' do
       should compile
       should compile.with_all_deps
       should contain_exec('apt_update')
-      should contain_class('X2go::Client')
-      should contain_class('X2go::Repo')
-      should contain_class('X2go::Repo::Debian')
-      should contain_apt__key ('Add key: E1F958385BFE2B6E from Apt::Source x2go')
+      should contain_class('x2go::repo::debian')
+      should contain_apt__key ('Add key: 972FD88FA0BAFB578D0476DFE1F958385BFE2B6E from Apt::Source x2go')
     }
-  end
-  context 'with defaults for all parameters' do
-    it { should contain_class('x2go') }
   end
 end

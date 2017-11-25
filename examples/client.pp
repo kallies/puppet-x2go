@@ -1,1 +1,3 @@
-x2go::client {'x2go-client': }
+class { '::x2go':
+  install_client => true,
+}

@@ -1,1 +1,3 @@
-x2go::server {'x2go-server': }
+class { '::x2go':
+  install_server => true,
+}

@@ -1,1 +1,1 @@
-x2go::plugin{'without_x2go_plugin':}
+include ::x2go::plugin

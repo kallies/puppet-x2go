@@ -1,26 +1,18 @@
-# Class: x2go::repo
-# ===========================
+# x2go::repo
 #
-# Authors
-# -------
-#
-# Niklaus Giger <niklaus.giger@member.fsf.org>
-# Lukas Kallies
-#
-# Copyright
-# ---------
-#
-# Copyright 2016 Lukas Kallies
 # Copyright 2011 Niklaus Giger
-
+#
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3 as published by
-# the Free Software Foundation.class
-
+# the Free Software Foundation.
+#
 # Supported distributions/version Debian, Ubuntu
 # see http://wiki.x2go.org/doku.php/wiki:repositories:debian
 #     http://wiki.x2go.org/doku.php/wiki:repositorîes:ubuntu
 # see also about automatic login
+#
+# @author Niklaus Giger <niklaus.giger@member.fsf.org>
+# @author Lukas Kallies <lukas@kalli.es>
 #
 class x2go::repo {
 
