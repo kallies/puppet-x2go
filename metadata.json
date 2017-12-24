@@ -1,6 +1,6 @@
 {
   "name": "kallies-x2go",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Lukas Kallies <lukas@kalli.es>",
   "summary": "x2go Puppet module.",
   "license": "GPL-3.0+",
