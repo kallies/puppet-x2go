@@ -19,18 +19,18 @@ class { 'x2go':
 }
 ```
 
-This sets ensure => present for the package. If you want to set a different
-value, you can override the x2go::params::ensure parameter using hiera.
+This sets `ensure => present` for the package. If you want to set a different
+value, you can override the `x2go::client::ensure` and `x2go::server::ensure`
+parameter using hiera.
 
 * To remove the x2go client:
 
 ```
-class { 'x2go':
-  version => 'baikal',
+class { 'x2go::client':
+  ensure => 'absent',
 }
-class { 'x2go::client::absent': }
 ```
-* To install the x2go server:
+* To only install the x2go server:
 
 ```
 class { 'x2go':
