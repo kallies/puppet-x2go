@@ -11,7 +11,9 @@ This module has been forked from [ngiger/puppet-x2go](https://github.com/ngiger/
 
 ## Examples
 
-* To install the x2go client:
+See the files under test for more examples.
+
+### To install the x2go client
 
 ```
 class { 'x2go':
@@ -23,14 +25,14 @@ This sets `ensure => present` for the package. If you want to set a different
 value, you can override the `x2go::client::ensure` and `x2go::server::ensure`
 parameter using hiera.
 
-* To remove the x2go client:
+### To remove the x2go client:
 
 ```
 class { 'x2go::client':
   ensure => 'absent',
 }
 ```
-* To only install the x2go server:
+### To only install the x2go server:
 
 ```
 class { 'x2go':
@@ -39,10 +41,17 @@ class { 'x2go':
 }
 ```
 
-* To install a x2go thin client environment
+### To install a x2go thin client environment (tce)
 
-:red_circle: because the tce class needs a lot of dependencies which are not needed for x2go client/server classes the tce stuff is only in branch x2go-thinclient-environment_tce
+:red_circle: The `tce` class has additional dependencies - which are not needed for x2go `client` or `server` class.
 
+Dependencies when using the thin client environment
+
+* `erwbgy-ssh` >= 0.2.1
+* `domcleal-augeasproviders` >= 1.2.0
+* `ngiger-dnsmasq` >= 0.1.0
+* `jbeard-nfs` >= 0.1.7
+* `jbeard-portmap` >= 0.1.7
 
 ```
 class { 'x2go::tce':
@@ -54,11 +63,10 @@ class { 'x2go::tce':
 
 You will probably have to customize your installation: see the [x2go wiki](http://wiki.x2go.org/doku.php/wiki:advanced:tce:install "x2go documentation: tce:install")
 
-* see the files under test for more examples
-
 ## License
 
-Copyright 2011-2013, niklaus.giger@member.fsf.org
+Copyright 2011-2014, Niklaus Giger
+          2016-2018, Lukas Kallies
 
 This program is free software; you can redistribute  it and/or modify it under the terms of the GNU General Public License version 3 as published by
 the Free Software Foundation.
