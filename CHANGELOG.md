@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.6.0](https://github.com/kallies/puppet-x2go/tree/v0.6.0)
+[Full Changelog](https://github.com/kallies/puppet-x2go/compare/v0.5.1...v0.6.0)
+
+* Re-add Thin Client Environment (tce) code
+* Update README regarding soft-dependencies for tce
+* Re-add hieradata for tce
+
+## [v0.5.1](https://github.com/kallies/puppet-x2go/tree/v0.5.1)
+[Full Changelog](https://github.com/kallies/puppet-x2go/compare/v0.5.0...v0.5.1)
+
+* Update README regarding client removal
+
 ## [v0.5.0](https://github.com/kallies/puppet-x2go/tree/v0.5.0)
 [Full Changelog](https://github.com/kallies/puppet-x2go/compare/0.3.0...v0.5.0)
 
