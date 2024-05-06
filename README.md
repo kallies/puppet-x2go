@@ -9,6 +9,8 @@ You may choose to use either the baikal version (only bug-fixes) or the main.
 This module has been forked from [ngiger/puppet-x2go](https://github.com/ngiger/puppet-x2go "ngiger/puppet-x2go") because 
 [the original author switched to Saltstack](https://github.com/ngiger/puppet-x2go/pull/5#issuecomment-262303301 "PR 5, issuecomment").
 
+The fork is not under active development and can be treated as deprecated.
+
 ## Examples
 
 See the files under test for more examples.
